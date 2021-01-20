@@ -1,5 +1,5 @@
 export interface Diagnose {
-  code: number;
+  code: string;
   name: string;
   latin?: string;
 }
