@@ -16,6 +16,4 @@ const getEntries = (): Array<Diagnose> => {
 
 export default {
   getEntries,
-  // addEntry,
-  //   getNonSensitiveEntries,
 };
