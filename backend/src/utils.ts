@@ -52,6 +52,7 @@ const toNewDiaryEntry = (object: any): NewPatientEntry => {
     ssn: parseParameter(object.ssn),
     gender: parseGender(object.gender),
     occupation: parseParameter(object.occupation),
+    entries: [],
   };
 
   return newEntry;

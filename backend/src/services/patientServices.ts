@@ -1,5 +1,10 @@
 import patients from "../../data/patients";
-import { Patient, PatientPublicData, NewPatientEntry } from "../types";
+import {
+  Patient,
+  PatientPublicData,
+  NewPatientEntry,
+  PublicPatient,
+} from "../types";
 
 const getAllPatients = (): Array<Patient> => {
   return patients;
@@ -25,8 +30,14 @@ const addPatient = (entry: NewPatientEntry): Patient => {
   return newPatientEntry;
 };
 
+const findById = (id: string): PublicPatient | undefined => {
+  const entry = patients.find((record) => record.id === id);
+  return entry;
+};
+
 export default {
   getAllPatients,
   getNonSensitiveEntries,
   addPatient,
+  findById,
 };

@@ -1,21 +1,30 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import patientsService from "../services/patientServices";
 import toNewDiaryEntry from "../utils";
 
 const router = express.Router();
 
 // Get all patients + ssn
-// router.get("/", (_req, res) => {
+// router.get("/", (_req: Request, res: Response) => {
 //   res.send(patientsService.getAllPatients());
-//   console.log("In patients!");
 // });
 
-router.get("/", (_req, res) => {
-  res.send(patientsService.getNonSensitiveEntries());
-  console.log("In patients!");
+router.get("/:id", (req: Request, res: Response) => {
+  const patient = patientsService.findById(req.params.id);
+
+  if (patient) {
+    res.send(patient);
+    console.log("req.params", patient);
+  } else {
+    res.sendStatus(404);
+  }
 });
 
-router.post("/", (req, res) => {
+router.get("/", (_req: Request, res: Response) => {
+  res.send(patientsService.getNonSensitiveEntries());
+});
+
+router.post("/", (req: Request, res: Response) => {
   try {
     const newPatientEntry = toNewDiaryEntry(req.body);
     const addedEntry = patientsService.addPatient(newPatientEntry);
