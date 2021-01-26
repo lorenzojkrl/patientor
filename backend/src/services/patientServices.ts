@@ -3,7 +3,7 @@ import {
   Patient,
   PatientPublicData,
   NewPatientEntry,
-  PublicPatient,
+  // PublicPatient,
 } from "../types";
 
 const getAllPatients = (): Array<Patient> => {
@@ -30,9 +30,10 @@ const addPatient = (entry: NewPatientEntry): Patient => {
   return newPatientEntry;
 };
 
-const findById = (id: string): PublicPatient | undefined => {
+const findById = (id: string): Patient | undefined => {
   const entry = patients.find((record) => record.id === id);
-  return entry;
+  console.log("entry", entry);
+  return patients.find((record) => record.id === id);
 };
 
 export default {

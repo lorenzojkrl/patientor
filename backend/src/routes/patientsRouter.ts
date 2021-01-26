@@ -9,15 +9,22 @@ const router = express.Router();
 //   res.send(patientsService.getAllPatients());
 // });
 
-router.get("/:id", (req: Request, res: Response) => {
-  const patient = patientsService.findById(req.params.id);
+// router.get("/:id", (req: Request, res: Response) => {
+//   const patient = patientsService.findById(req.params.id);
 
-  if (patient) {
-    res.send(patient);
-    console.log("req.params", patient);
-  } else {
-    res.sendStatus(404);
-  }
+//   if (patient) {
+//     res.send(patient);
+//     console.log("req.params", patient);
+//   } else {
+//     res.sendStatus(404);
+//   }
+// });
+
+router.get("/:id", (req: Request, res: Response) => {
+  const { id } = req.params;
+  const patient = patientsService.findById(id);
+
+  res.send(patient);
 });
 
 router.get("/", (_req: Request, res: Response) => {
